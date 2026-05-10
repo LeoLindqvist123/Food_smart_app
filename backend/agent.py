@@ -1,6 +1,7 @@
 from pydantic_ai import Agent
 from dotenv import load_dotenv
 from backend.constants import MODEL
+from pydantic import BaseModel
 
 load_dotenv()
 
