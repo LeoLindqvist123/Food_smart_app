@@ -14,14 +14,16 @@ class FoodResult(BaseModel):
     fat: int
 
 food_agent = Agent(
-    model = MODEL,
+    model=MODEL,
     system_prompt=(
-        "You are a intelligent and smart scanner"
+        "You are a food scanning AI. Analyze the food in the image and return "
+        "accurate nutritional estimates and a simple recipe if applicable."
     ),
     output_type=FoodResult,
+    model_settings={"max_tokens": 1024},
 )
 
-async def analyze_images(images_bytes: bytes, media_type:str = "image/jpg") -> FoodResult:
+async def analyze_images(images_bytes: bytes, media_type:str = "image/jpeg") -> FoodResult:
     result = await food_agent.run(
             [
             BinaryContent(data=image_bytes, media_type=media_type),

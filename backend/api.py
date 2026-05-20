@@ -15,4 +15,4 @@ async def scan_food(image: UploadFile = File(...)):
         BinaryContent(data=contents, media_type=image.content_type),
         "Analyze this food image and provide nutritional information"
     ])
-    return result.data
+    return result.output

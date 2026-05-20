@@ -1,4 +1,1 @@
-
-
-
-MODEL = "openrouter:google/gemini-2.0-flash-exp:free"
+MODEL = "openrouter:anthropic/claude-haiku-4-5"
