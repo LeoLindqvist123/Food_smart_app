@@ -6,8 +6,8 @@ requires-python = ">=3.13"
 
 dependencies = [
     "lancedb",
-    "pydantic-ai", 
-    "fastapi", 
-    "uvicorn", 
-    "mlflow"
+    "pydantic-ai",
+    "fastapi",
+    "uvicorn",
+    "mlflow",
 ]

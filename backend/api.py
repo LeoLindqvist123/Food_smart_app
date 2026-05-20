@@ -1,4 +1,6 @@
 from fastapi import FastAPI, UploadFile, File
+from agent import food_agent
+from pydantic_ai import BinaryContent
 
 app = FastAPI(title="FoodSmart API")
 
@@ -8,7 +10,9 @@ def root():
 
 @app.post("/scan")
 async def scan_food(image: UploadFile = File(...)):
-    scan = await image.read()
-    return {
-    "food": "äpple, banan, jordgubb"
-    }
+    contents = await image.read()
+    result = await food_agent.run([
+        BinaryContent(data=contents, media_type=image.content_type),
+        "Analyze this food image and provide nutritional information"
+    ])
+    return result.data
